@@ -14,3 +14,21 @@ const multiply = (n1, n2) => {
 const divider = (n1, n2) => {
     return n1 / n2;
 };
+//union타입은 복수계의 타입을 허용
+const info = (num) => {
+    console.log(`${num}번째 방문자입니다.`);
+};
+info('3');
+const test = (n1, n2, n3) => {
+    // || falsy한 값이 들어오면 어떤것이든 대체값 적용
+    // ?? null, undefined이 들어왔을떄에만 대체값 적용
+    // 잘못된값이 들어오는게 아닌 아예 들어오는 값이 없을때 대체값을 넣을떄에는 ?? 연산자 활용
+    const result = n1 + n2 + (n3 !== null && n3 !== void 0 ? n3 : 5);
+    return result;
+};
+console.log(test(1, 2));
+console.log(test(2, 3, 0)); // 결과: 5
+console.log(test(2, 3, null)); // 결과: 5
+console.log(test(2, 3)); // 결과: 10 (n3가 없으므로 대체값 5가 적용됨)
+console.log(test(2, 3, undefined)); // 결과: 5
+export {};
