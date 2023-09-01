@@ -36,7 +36,20 @@ const test = (n1: number, n2: number, n3?: number) => {
 	return result;
 };
 
-console.log(test(1, 2));
+console.log(test(1, 2, 3));
+//reduce: 불변성 유지하면서 기존의 연산된 값을 가져와서 현재값과 재연산하면서 누적된 결과값을 리턴
+//reduce 함수를 사용하여 배열의 요소를 더하고, 초기값으로 0을 사용
+
+//초기값 0과 배열의 첫 번째 요소 1을 더한다  (0 + 1 = 1)
+//그 다음 배열의 요소인 2를 더한다  (1 + 2 = 3)
+//그 다음 배열의 요소인 3을 더한다  (3 + 3 = 6)
+//마지막으로 배열의 요소인 4를 더한다 (6 + 4 = 10)
+
+//acc: 누적값(accumulator)을 나타내는 변수
+//cur: 현재 요소(current element)를 나타내는 변수
+const test2 = (...nums: number[]) => nums.reduce((acc, cur) => acc + cur, 0);
+console.log(test2(1, 2, 3, 4)); // 결과: 10
+
 console.log(test(2, 3, 0)); // 결과: 5
 console.log(test(2, 3, null)); // 결과: 5
 console.log(test(2, 3)); // 결과: 10 (n3가 없으므로 대체값 5가 적용됨)
